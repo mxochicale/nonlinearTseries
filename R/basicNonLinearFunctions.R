@@ -82,10 +82,11 @@ buildTakens = function(time.series, embedding.dim, time.lag) {
   #
   #class(takens) = "takens"
   id = deparse(substitute(time.series))
-  attr(takens,"embedding.dim") = embedding.dim
-  attr(takens,"time.lag") = time.lag
-  attr(takens,"id") = id
-  takens
+  # attr(takens,"embedding.dim") = embedding.dim
+  # attr(takens,"time.lag") = time.lag
+  # attr(takens,"id") = id
+  # takens
+  list(takens,embedding.dim,time.lag,id)
 }
 
 #' Estimate an appropiate time lag for the Takens' vectors

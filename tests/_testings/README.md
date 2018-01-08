@@ -1,4 +1,37 @@
-# TESTING buildTakens() with data.table
+
+
+# Recurrence Plot recurrencePlot() and rqa()
+__5JANUARY2018__
+
+
+* The recurrencePlotFromMatrix() function in RQA.R
+use neighbourList2SparseMatrix to convert values to a matrix and sparse its values
+
+
+* Before to use recurrencePlot(), it is important that in buildTakens(), you do the following:
+uncomment:
+```
+attr(takens,"embedding.dim") = embedding.dim
+attr(takens,"time.lag") = time.lag
+attr(takens,"id") = id
+takens
+```
+and commenting
+```
+  # list(takens,embedding.dim,time.lag,id)
+```
+
+
+Example:
+```
+lorenz.ts = lorenz(time=seq(0,10,by=0.01), do.plot=FALSE)$x
+recurrencePlot(takens = NULL, time.series = lorenz.ts, embedding.dim=2, time.lag=1,radius=2)
+```
+
+
+
+
+# buildTakens() with data.table
 __28DEC2017__
 
 commenting
@@ -11,7 +44,7 @@ commenting
 to work with "list(takens,embedding.dim,time.lag,id)"
 
 
-# TESTING timelag() function
+# timelag() function
 __7NOV2017__
 
 timelag() funciton is at ~/nonlinearTseries/R/basicNonLinearFunctions.R

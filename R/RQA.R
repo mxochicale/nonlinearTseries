@@ -1,42 +1,42 @@
 #' Recurrence Quantification Analysis (RQA)
 #' @description
-#' The Recurrence Quantification Analysis (RQA) is an advanced technique for the 
-#' nonlinear analysis that allows to quantify the number and duration of the 
-#' recurrences in the phase space. 
-#' @param time.series The original time series from which the phase-space 
+#' The Recurrence Quantification Analysis (RQA) is an advanced technique for the
+#' nonlinear analysis that allows to quantify the number and duration of the
+#' recurrences in the phase space.
+#' @param time.series The original time series from which the phase-space
 #' reconstruction is performed.
-#' @param embedding.dim Integer denoting the dimension in which we shall 
+#' @param embedding.dim Integer denoting the dimension in which we shall
 #' embed the \emph{time.series}.
-#' @param time.lag Integer denoting the number of time steps that will be use 
+#' @param time.lag Integer denoting the number of time steps that will be use
 #' to construct the  Takens' vectors.
-#' @param takens Instead of specifying the \emph{time.series}, 
-#' the \emph{embedding.dim} and the \emph{time.lag}, the user may specify 
-#' directly the Takens' vectors. 
-#' @param radius Maximum distance between two phase-space points to be 
+#' @param takens Instead of specifying the \emph{time.series},
+#' the \emph{embedding.dim} and the \emph{time.lag}, the user may specify
+#' directly the Takens' vectors.
+#' @param radius Maximum distance between two phase-space points to be
 #' considered a recurrence.
-#' @param lmin Minimal length of a diagonal line to be considered in the RQA. 
+#' @param lmin Minimal length of a diagonal line to be considered in the RQA.
 #' Default \emph{lmin} = 2.
-#' @param vmin Minimal length of a vertical line to be considered in the RQA. 
+#' @param vmin Minimal length of a vertical line to be considered in the RQA.
 #' Default \emph{vmin} = 2.
-#' @param save.RM Logical value. If TRUE, the recurrence matrix is stored as a 
-#' sparse matrix. Note that computing the recurrences in matrix form can be 
+#' @param save.RM Logical value. If TRUE, the recurrence matrix is stored as a
+#' sparse matrix. Note that computing the recurrences in matrix form can be
 #' computationally expensive.
-#' @param do.plot Logical. If TRUE, the recurrence plot is shown. However, 
-#' plotting the recurrence matrix is computationally expensive. Use with 
+#' @param do.plot Logical. If TRUE, the recurrence plot is shown. However,
+#' plotting the recurrence matrix is computationally expensive. Use with
 #' caution.
 #' @param ... Additional plotting parameters.
-#' @param distanceToBorder In order to avoid border effects, the 
-#' \emph{distanceToBorder} points near the border of the recurrence matrix 
-#' are ignored when computing the RQA parameters. Default, 
+#' @param distanceToBorder In order to avoid border effects, the
+#' \emph{distanceToBorder} points near the border of the recurrence matrix
+#' are ignored when computing the RQA parameters. Default,
 #' \emph{distanceToBorder} = 2.
-#' @return A \emph{rqa}  object that consist of a list with the most important 
+#' @return A \emph{rqa}  object that consist of a list with the most important
 #' RQA parameters:
 #' \itemize{
-#'  \item \emph{recurrence.matrix}: A sparse symmetric matrix containing the 
+#'  \item \emph{recurrence.matrix}: A sparse symmetric matrix containing the
 #'  recurrences of the phase space.
-#'  \item \emph{REC}: Recurrence. Percentage of recurrence points in a 
+#'  \item \emph{REC}: Recurrence. Percentage of recurrence points in a
 #'  Recurrence Plot.
-#'  \item \emph{DET}: Determinism. Percentage of recurrence points that form 
+#'  \item \emph{DET}: Determinism. Percentage of recurrence points that form
 #'  diagonal lines.
 #'  \item \emph{LAM}: Percentage of recurrent points that form vertical lines.
 #'  \item \emph{RATIO}: Ratio between \emph{DET} and \emph{RR}.
@@ -45,17 +45,17 @@
 #'   not taken into account.
 #'  \item \emph{DIV}: Inverse of \emph{Lmax}.
 #'  \item \emph{Vmax}: Longest vertical line.
-#'  \item \emph{Vmean}: Average length of the vertical lines. This parameter is 
+#'  \item \emph{Vmean}: Average length of the vertical lines. This parameter is
 #'  also referred to as the Trapping time.
 #'  \item \emph{ENTR}: Shannon entropy of the diagonal line lengths distribution
 #'  \item \emph{TREND}: Trend of the number of recurrent points depending on the
 #'   distance to the main diagonal
 #'  \item \emph{diagonalHistogram}: Histogram of the length of the diagonals.
-#'  \item \emph{recurrenceRate}: Number of recurrent points depending on the 
+#'  \item \emph{recurrenceRate}: Number of recurrent points depending on the
 #'  distance to the main diagonal.
 #' }
-#' 
-#' @references Zbilut, J. P. and C. L. Webber. Recurrence quantification 
+#'
+#' @references Zbilut, J. P. and C. L. Webber. Recurrence quantification
 #' analysis. Wiley Encyclopedia of Biomedical Engineering  (2006).
 #' @examples
 #' \dontrun{
@@ -68,19 +68,19 @@
 #' @rdname rqa
 #' @export rqa
 rqa = function(takens = NULL, time.series = NULL, embedding.dim = 2,
-               time.lag = 1, radius, lmin = 2, vmin = 2, distanceToBorder = 2, 
+               time.lag = 1, radius, lmin = 2, vmin = 2, distanceToBorder = 2,
                save.RM = TRUE, do.plot = FALSE, ...) {
   if (is.null(takens)) {
-    takens = buildTakens( time.series, embedding.dim = embedding.dim, time.lag = time.lag)  
-  } 
+    takens = buildTakens( time.series, embedding.dim = embedding.dim, time.lag = time.lag)
+  }
   ntakens = nrow(takens)
   # distance to the border of the matrix to use in the linear regression that estimates
   #the trend
   maxDistanceMD = ntakens - distanceToBorder
   # this should not happen
   if (maxDistanceMD <= 1) {
-    maxDistanceMD = 2 
-  } 
+    maxDistanceMD = 2
+  }
   neighs = findAllNeighbours(takens, radius)
   if (save.RM || do.plot) {
     neighs.matrix = neighbourList2SparseMatrix(neighs)
@@ -89,13 +89,13 @@ rqa = function(takens = NULL, time.series = NULL, embedding.dim = 2,
     rec.plot = recurrencePlotFromMatrix(neighs.matrix,...)
   }
   hist = getHistograms(neighs, ntakens, lmin, vmin)
-  # calculate the number of recurrence points from the recurrence rate. The 
-  # recurrence rate counts the number of points at every distance in a concrete 
+  # calculate the number of recurrence points from the recurrence rate. The
+  # recurrence rate counts the number of points at every distance in a concrete
   # side of the main diagonal.
-  # Thus, sum all points for all distances, multiply by 2 (count both sides) and 
+  # Thus, sum all points for all distances, multiply by 2 (count both sides) and
   # add the maindiagonal
   numberRecurrencePoints = sum(hist$recurrenceHist) + ntakens
-  # calculate the recurrence rate dividing the number of recurrent points at a 
+  # calculate the recurrence rate dividing the number of recurrent points at a
   # given distance by all points that could be at that distance
   recurrence_rate_vector = hist$recurrenceHist[1:(ntakens - 1)] / ((ntakens - 1):1)
   # percentage of recurrent points
@@ -117,17 +117,17 @@ rqa = function(takens = NULL, time.series = NULL, embedding.dim = 2,
       recurrenceRate = recurrence_rate_vector
     )
   )
-  
+
   if (!save.RM) {
     neighs.matrix = NULL
   }
   rqa.analysis = c(list(recurrence.matrix = neighs.matrix),
                    rqa.parameters)
-  
+
   rqa.analysis = propagateTakensAttr(rqa.analysis, takens)
   attr(rqa.analysis, "radius") = radius
   class(rqa.analysis) = "rqa"
-  
+
   rqa.analysis
 }
 
@@ -139,52 +139,58 @@ plot.rqa = function(x,...){
   }else{
     stop("The recurrence matrix has not been stored... Impossible to plot!")
   }
-  
+
 }
 
-#' Recurrence Plot 
+#' Recurrence Plot
 #' @description
 #' Plot the recurrence matrix.
 #' @details
 #' WARNING: This function is computationally very expensive. Use with caution.
-#' @param time.series The original time series from which the phase-space 
+#' @param time.series The original time series from which the phase-space
 #' reconstruction is performed.
-#' @param embedding.dim Integer denoting the dimension in which we shall embed 
+#' @param embedding.dim Integer denoting the dimension in which we shall embed
 #' the \emph{time.series}.
-#' @param time.lag Integer denoting the number of time steps that will be use 
+#' @param time.lag Integer denoting the number of time steps that will be use
 #' to construct the  Takens' vectors.
-#' @param takens Instead of specifying the \emph{time.series}, the 
-#' \emph{embedding.dim} and the \emph{time.lag}, the user may specify directly 
-#' the Takens' vectors. 
-#' @param radius Maximum distance between two phase-space points to be 
+#' @param takens Instead of specifying the \emph{time.series}, the
+#' \emph{embedding.dim} and the \emph{time.lag}, the user may specify directly
+#' the Takens' vectors.
+#' @param radius Maximum distance between two phase-space points to be
 #' considered a recurrence.
 #' @param ... Additional plotting parameters.
-#' @references Zbilut, J. P. and C. L. Webber. Recurrence quantification 
+#' @references Zbilut, J. P. and C. L. Webber. Recurrence quantification
 #' analysis. Wiley Encyclopedia of Biomedical Engineering  (2006).
+#' @examples
+#' \dontrun{
+#' lorenz.ts = lorenz(time=seq(0,10,by=0.01), do.plot=FALSE)$x
+#' recurrencePlot(takens = NULL, time.series = lorenz.ts,
+#'                embedding.dim=2, time.lag=1,radius=2)
+#' }
 #' @author Constantino A. Garcia
 #' @export recurrencePlot
 #' @import Matrix
 #' @useDynLib nonlinearTseries
-recurrencePlot = function(takens = NULL, time.series, 
+recurrencePlot = function(takens = NULL, time.series,
                           embedding.dim, time.lag,radius,
                           ...){
   if (is.null(takens)) {
     takens = buildTakens(time.series,
-                         embedding.dim = embedding.dim, 
-                         time.lag = time.lag)  
-  } 
+                         embedding.dim = embedding.dim,
+                         time.lag = time.lag)
+  }
   neighs.matrix = neighbourList2SparseMatrix(findAllNeighbours(takens, radius))
   recurrencePlotFromMatrix(neighs.matrix, ...)
 }
 
-#private 
+#private
 recurrencePlotFromMatrix = function(neighs.matrix,
                                     main="Recurrence plot",
                                     xlab="Takens vector's index",
                                     ylab="Takens vector's index", ...) {
   # need a print because it is a trellis object!!
   rec.plot = image(neighs.matrix,
-                   main = main, xlab = xlab, ylab = ylab, 
+                   main = main, xlab = xlab, ylab = ylab,
                    ...)
   print(rec.plot)
   rec.plot
@@ -207,7 +213,7 @@ neighbourList2SparseMatrix = function(neighs) {
   neigh.len = sum(sapply(neighs, FUN = length)) + ntakens
   neighs.matrix = matrix(0,nrow = neigh.len , ncol = 2)
   .Call("_nonlinearTseries_neighsList2SparseRCreator",
-        neighs = as.list(neighs), ntakens = as.integer(ntakens), 
+        neighs = as.list(neighs), ntakens = as.integer(ntakens),
         neighs_matrix = as.matrix(neighs.matrix), PACKAGE = "nonlinearTseries")
   neighs.matrix
   sparseMatrix(neighs.matrix[,1],neighs.matrix[,2],dims = c(ntakens,ntakens),
@@ -245,7 +251,7 @@ calculateVerticalParameters = function(ntakens, numberRecurrencePoints,
     Vmax = tail(histogramWithoutZeros, 1)
   } else {
     Vmax = 0
-  } 
+  }
   #results
   list(LAM = LAM, Vmax = Vmax, Vmean = Vmean)
 }
@@ -259,7 +265,7 @@ calculateDiagonalParameters = function(ntakens, numberRecurrencePoints,
   Lmean = num / sum(lDiagonalHistogram[lmin:ntakens])
   aux.index = lmin:(ntakens - 1)
   LmeanWithoutMain = (
-    sum((aux.index) * lDiagonalHistogram[aux.index]) / 
+    sum((aux.index) * lDiagonalHistogram[aux.index]) /
       sum(lDiagonalHistogram[aux.index])
   )
   #pick the penultimate
@@ -271,7 +277,7 @@ calculateDiagonalParameters = function(ntakens, numberRecurrencePoints,
   pl = lDiagonalHistogram / sum(lDiagonalHistogram)
   diff_0 = which(pl > 0)
   ENTR = -sum(pl[diff_0] * log(pl[diff_0]))
-  
+
   # use only recurrent points with a distance to the main diagonal < maxDistance
   recurrence_rate_vector = recurrence_rate_vector[1:maxDistanceMD]
   mrrv = mean(recurrence_rate_vector)
@@ -280,7 +286,7 @@ calculateDiagonalParameters = function(ntakens, numberRecurrencePoints,
   auxiliarVector = (1:maxDistanceMD - (maxDistanceMD + 1) / 2)
   auxiliarVector2 = auxiliarVector * auxiliarVector
   # divide by two because we are having into account just one side of the main diag
-  num = sum(auxiliarVector * ((recurrence_rate_vector - mrrv) / 2)) 
+  num = sum(auxiliarVector * ((recurrence_rate_vector - mrrv) / 2))
   den = sum(auxiliarVector2)
   TREND = num / den
   #results
@@ -294,9 +300,9 @@ getHistograms = function(neighs, ntakens, lmin, vmin){
   # the neighbours are labeled from 0 to ntakens-1
   c.matrix = neighbourListToCsparseNeighbourMatrix(neighs)
   # auxiliar variables
-  .Call("_nonlinearTseries_get_rqa_histograms", 
+  .Call("_nonlinearTseries_get_rqa_histograms",
         neighs = c.matrix$neighs, nneighs = c.matrix$nneighs,
         ntakens = as.integer(ntakens), vmin = as.integer(vmin),
         lmin = as.integer(lmin),
         PACKAGE = "nonlinearTseries")
-}  
+}

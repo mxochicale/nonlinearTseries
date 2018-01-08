@@ -16,7 +16,7 @@ package available in GitHub.
 
 ## Getting started
 For a quick introduction to `nonlinearTseries`, see its
-[vignette](https://cran.r-project.org/web/packages/nonlinearTseries/vignettes/nonlinearTseries_quickstart.html).
+[vignette](https://cran.r-project.org/web/packages/nonlinearTseries/vignettes/nonlinearTseries_quickstart.html) or the [package documentation](https://cran.r-project.org/web/packages/nonlinearTseries/nonlinearTseries.pdf).
 
 
 ## Developing Debugging and Testing with nonlinearTseries
@@ -39,7 +39,7 @@ load_all('~/mxochicale/github/nonlinearTseries')
 buildTakens(1:20,embedding.dim=5,time.lag=3)
 ```
 
-## You can also install the library as follows
+## You can also install the library from a given path as follows
 ```
 library(devtools)
 install('~/mxochicale/github/nonlinearTseries')
@@ -48,13 +48,11 @@ buildTakens(1:20,embedding.dim=5,time.lag=3)
 ```
 
 # TESTING ZONE
----
-In [TESTING ZONE](https://github.com/mxochicale/nonlinearTseries/blob/master/TESTING.md),
-you will find all the experiments regarding the use of this library:
+In [TESTING ZONE](https://github.com/mxochicale/nonlinearTseries/tree/master/tests/_testings),
+you will find all the experiments regarding the use of this library.
 
 # TODO
----
-With that in mind, many things have to be done: [TODO](https://github.com/mxochicale/nonlinearTseries/blob/master/TODO.md)
+This is the [TODO List](https://github.com/mxochicale/nonlinearTseries/blob/master/TODO.md)
 
 # SUGGESTIONS
 * When modifying the code, avoid to delete blank lines as these are a bit strange

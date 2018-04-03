@@ -56,13 +56,8 @@ library('nonlinearTseries')
 buildTakens(1:20,embedding.dim=5,time.lag=3)
 ```
 
-# TESTING ZONE
-In [TESTING ZONE](https://github.com/mxochicale/nonlinearTseries/tree/master/tests/_testings),
+# TESTING/EXPERIMENTAL ZONE
+In [TESTING/EXPERIMENTAL ZONE](https://github.com/mxochicale/nonlinearTseries/tree/master/tests/_testings),
 you will find all the experiments regarding the use of this library.
 
-# TODO
-This is the [TODO List](https://github.com/mxochicale/nonlinearTseries/blob/master/TODO.md)
 
-# SUGGESTIONS
-* When modifying the code, avoid to delete blank lines as these are a bit strange
-to follow in the continues modification of the library. __28DEC2017__

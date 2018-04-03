@@ -12,6 +12,14 @@ to follow in future modification of the library. __28DEC2017__
 
 # TODO LIST
 
+
+* [ ] Clean/merge experiemtal/testing zone:
+	`https://github.com/mxochicale/nonlinearTseries/tree/master/tests/_testings`
+	`https://github.com/mxochicale/nonlinearTseries/tree/master/tests/mx-testings/rqa`
+	(created:3april2018, sorted:???)
+
+ 
+
 - [ ] Create alternative R/testingfunctions.R for any tests and avoid troubles
 with the stable functions.
 __(Created:8JANUARY2018;Sorted:DayMonthYear),[commit]()__

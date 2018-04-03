@@ -9,10 +9,6 @@ among others. Basic routines for surrogate data testing are also included.
 The package is largely inspired by the book [Nonlinear time series analysis](https://www.amazon.com/Nonlinear-Time-Analysis-Holger-Kantz/dp/0521529026)
 by Holger Kantz and Thomas Schreiber.
 
-**NOTE** Many thanks to [constantino-garcia](https://github.com/constantino-garcia/)
-for making the [`nonlinearTseries`](https://github.com/constantino-garcia/nonlinearTseries)
-package available in GitHub.
-
 
 ## Getting started
 For a quick introduction to `nonlinearTseries`, see its

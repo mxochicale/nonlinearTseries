@@ -1,3 +1,15 @@
+
+First of all, I am very thankfull with [Constantino-Garcia](https://github.com/constantino-garcia/)
+for making the [`nonlinearTseries`](https://github.com/constantino-garcia/nonlinearTseries)
+package available in GitHub.
+_september 2017_
+
+# GENERAL SUGGESTIONS
+
+* When modifying the code, avoid to delete blank lines as these are a bit strange
+to follow in future modification of the library. __28DEC2017__
+
+
 # TODO LIST
 
 - [ ] Create alternative R/testingfunctions.R for any tests and avoid troubles
@@ -17,3 +29,4 @@ __(Created:7NOV2017;Sorted:DayMonthYear),[commit]()__
 
 
 # SORTED LIST
+

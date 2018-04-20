@@ -37,18 +37,12 @@ load_all('~/mxochicale/github/nonlinearTseries')
 # (1) Defining paths for main_path, r_scripts_path, ..., etc.
 r_scripts_path <- getwd()
 
-# rossler.ts =  rossler(time=seq(0, 10, by = 0.01),do.plot=FALSE)$x
-# recurrencePlot(takens = NULL, time.series = rossler.ts, embedding.dim=3, time.lag=1,radius=1.01)
+
+rossler.ts =  rossler(time=seq(0, 10, by = 0.01),do.plot=FALSE)$x
+p1 <- recurrencePlot(takens = NULL, time.series = rossler.ts, embedding.dim=3, time.lag=1,radius=1.01)
 
 lorenz.ts = lorenz(time=seq(0,10,by=0.01), do.plot=FALSE)$x
-recurrencePlot(takens = NULL, time.series = lorenz.ts, embedding.dim=2, time.lag=1,radius=2)
-
-
-
-
-
-# rqa.analysis=rqa(time.series = rossler.ts, embedding.dim=2, time.lag=1,radius=1.2,lmin=2,do.plot=FALSE,distanceToBorder=2)
-# plot(rqa.analysis)
+p2 <- recurrencePlot(takens = NULL, time.series = lorenz.ts, embedding.dim=2, time.lag=1,radius=2)
 
 
 

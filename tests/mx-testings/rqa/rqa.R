@@ -47,18 +47,23 @@ lorenz.ts = lorenz(time=seq(0,10,by=0.01), do.plot=FALSE)$x
 rqa.analysis=rqa(time.series = lorenz.ts, embedding.dim=2, time.lag=1,
                 radius=2,lmin=2,vmin=2,do.plot=FALSE,distanceToBorder=2)
 
+
+#### DEFAUTL IMAGE
 plot(rqa.analysis)
 
+
+#### USING image()
 # Extract values for ploting
-# rm <- as.matrix(rqa.analysis$recurrence.matrix)
-# image(as.matrix(rm), col= gray ( (32:0)/32 ))
+rm <- as.matrix(rqa.analysis$recurrence.matrix)
+image(as.matrix(rm), col= gray ( (32:0)/32 ))
 
 
-# library(ggplot2)
-# library(reshape2)#for melt
-# RM <- melt(rm, varnames=c('a','b'),value.name='Recurrence')
-# ggplot(RM,aes(x=a,y=b,fill=Recurrence))+
-#   geom_raster()
+#### USING ggplot()
+library(ggplot2)
+library(reshape2)#for melt
+RM <- melt(rm, varnames=c('a','b'),value.name='Recurrence')
+p2 <- ggplot(RM,aes(x=a,y=b,fill=Recurrence))+
+	geom_raster()
 ## [Source](https://quantdev.ssri.psu.edu/sites/qdev/files/CRQATutorial_LabMeeting_160714.html)
 
 

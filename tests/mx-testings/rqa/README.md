@@ -1,3 +1,51 @@
+RQA
+---
+
+```
+
+> rqa output
+$recurrence.matrix
+1000 x 1000 sparse Matrix of class "nsCMatrix"
+$REC
+[1] 0.497344
+$RATIO
+[1] 2.010471
+$DET
+[1] 0.9998954
+$DIV
+[1] 0.001001001
+$Lmax
+[1] 999
+$Lmean
+[1] 23.66592
+$LmeanWithoutMain
+[1] 23.61946
+$ENTR
+[1] 3.131998
+$TREND
+[1] -0.0004832083
+$LAM
+[1] 0.9999698
+$Vmax
+[1] 425
+$Vmean
+[1] 30.92842
+$diagonalHistogram
+$verticalHistogram
+$recurrenceRate
+attr(,"id")
+[1] "time.series"
+attr(,"time.lag")
+[1] 1
+attr(,"embedding.dim")
+[1] 2
+attr(,"radius")
+[1] 2
+attr(,"class")
+[1] "rqa"
+
+```
+
 
 
 # Recurrence Plot recurrencePlot() and rqa()

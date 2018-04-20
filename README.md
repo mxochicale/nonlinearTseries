@@ -12,7 +12,8 @@ by Holger Kantz and Thomas Schreiber.
 
 ## Getting started
 For a quick introduction to `nonlinearTseries`, see its
-[vignette](https://cran.r-project.org/web/packages/nonlinearTseries/vignettes/nonlinearTseries_quickstart.html) or the [package documentation](https://cran.r-project.org/web/packages/nonlinearTseries/nonlinearTseries.pdf).
+[vignette](https://cran.r-project.org/web/packages/nonlinearTseries/vignettes/nonlinearTseries_quickstart.html) 
+or the [package documentation](https://cran.r-project.org/web/packages/nonlinearTseries/nonlinearTseries.pdf).
 
 ## Dependencies
 

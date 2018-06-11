@@ -1,4 +1,4 @@
-## Experimenting with `nonlinearTseries`
+## What is `nonlinearTseries`
 
 [`nonlinearTseries`](https://github.com/constantino-garcia/nonlinearTseries)
 provides functions for nonlinear time series analysis. This package permits the
@@ -9,56 +9,30 @@ among others. Basic routines for surrogate data testing are also included.
 The package is largely inspired by the book [Nonlinear time series analysis](https://www.amazon.com/Nonlinear-Time-Analysis-Holger-Kantz/dp/0521529026)
 by Holger Kantz and Thomas Schreiber.
 
-
 ## Getting started
 For a quick introduction to `nonlinearTseries`, see its
 [vignette](https://cran.r-project.org/web/packages/nonlinearTseries/vignettes/nonlinearTseries_quickstart.html) 
 or the [package documentation](https://cran.r-project.org/web/packages/nonlinearTseries/nonlinearTseries.pdf).
 
+# Installation
+You can install the he latest released version from 
+[CRAN](https://cran.r-project.org/web/packages/nonlinearTseries/index.html) with:
+```
+install.packages("nonlinearTseries")
+```
+
 ## Dependencies
 
-Install the following dependencies
-
+You might also require to install the following dependencies
 ```
 R
 mirror_repo <- 'https://www.stats.bris.ac.uk/R/'
 install.packages("tseries", repos=mirror_repo, dependencies = TRUE)
 install.packages("TSA", repos=mirror_repo, dependencies = TRUE)
 install.packages("RcppArmadillo", repos=mirror_repo, dependencies = TRUE)
-
 ```
 
+## Citation
+You can get information about citing `nonlinearTseries` using `citation('nonlinearTseries')` in an `R` session.
 
-## Developing Debugging and Testing with nonlinearTseries
-
-```
-cd ~/mxochicale/github/nonlinearTseries
-R
-library(roxygen2); library("devtools")
-install('nonlinearTseries')
-library('nonlinearTseries')
-buildTakens(1:20,embedding.dim=5,time.lag=3)
-```
-
-
-## Loading nonlinearTseries from a given path
-
-```
-library(devtools)
-load_all('~/mxochicale/github/nonlinearTseries')
-buildTakens(1:20,embedding.dim=5,time.lag=3)
-```
-
-## You can also install the library from a given path as follows
-```
-library(devtools)
-install('~/mxochicale/github/nonlinearTseries')
-library('nonlinearTseries')
-buildTakens(1:20,embedding.dim=5,time.lag=3)
-```
-
-# TESTING/EXPERIMENTAL ZONE
-In [TESTING/EXPERIMENTAL ZONE](https://github.com/mxochicale/nonlinearTseries/tree/master/tests/_testings),
-you will find all the experiments regarding the use of this library.
-
-
+ 
